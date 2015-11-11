@@ -1,0 +1,18 @@
+input {
+<%  @scripts.each do |script| %>
+  exec {
+    type => "intel-hadoop-metrics"
+    command => "/opt/intel-stats-scripts/<%= script %>.sh"
+    interval => 2
+    add_field => { "stat_type" => "<%= script %>" }
+  }
+<% end %>
+}
+
+output {
+  file {
+    path => "<%= @metrics_dir %>/%{stat_type}"
+    message_format => "%{message}"
+    gzip => <%= @compress %>
+  }
+}

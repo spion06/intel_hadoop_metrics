@@ -1,0 +1,19 @@
+---
+driver:
+  name: vagrant
+
+provisioner:
+  name: chef_zero
+
+platforms:
+  - name: rhel-6.5
+    driver_config:
+      box: rhel65-1.0.0
+      box_url: http://repo.release.cerner.corp/nexus/content/repositories/vagrant/com/cerner/vagrant/rhel65/1.0.0/rhel65-1.0.0.box
+  #- name: centos-6.7
+
+suites:
+  - name: default
+    run_list:
+      - recipe[intel_hadoop_metrics]
+    attributes: 
