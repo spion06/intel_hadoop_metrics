@@ -44,6 +44,7 @@ end
 logstash_service 'intel_hadoop_metrics' do
   action [:enable]
   not_if { ::File.exist?('/etc/init.d/logstash_intel_hadoop_metrics') }
+  notifies :stop, 'service[logstash_intel_hadoop_metrics]'
 end
 
 # don't leave this started. only start on demand
