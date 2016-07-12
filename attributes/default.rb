@@ -15,3 +15,5 @@ default['logstash']['instance_default']['init_method'] = 'native'
 default['intel_hadoop_metrics']['metrics_dir'] = '/var/log/intel-hadoop-metrics/'
 default['intel_hadoop_metrics']['compress'] = true
 default['intel_hadoop_metrics']['scripts'] = %w(cpustat iostat jvms memstat mpstat netstat perf vmstat)
+
+default['intel_hadoop_metrics']['mode'] = 'install'
